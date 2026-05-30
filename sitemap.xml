@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Home Page -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <!-- About Us Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#about</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <!-- Management Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#team</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <!-- Terms Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#terms</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <!-- Refund Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#refund</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <!-- Privacy Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#privacy</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <!-- Contact Section -->
+  <url>
+    <loc>https://portal.chilmarieshop.top/#contact</loc>
+    <lastmod>2026-05-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
