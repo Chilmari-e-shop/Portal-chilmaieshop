@@ -231,36 +231,57 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--surface)ee;
+      background: var(--surface);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: center;
-      gap: 4px;
-      padding: 0 16px;
+      padding: 10px 12px;
       overflow-x: auto;
+      overflow-y: hidden;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
     nav::-webkit-scrollbar { display: none; }
 
+    .nav-inner {
+      display: flex;
+      gap: 6px;
+      width: max-content;
+      min-width: 100%;
+      justify-content: center;
+    }
+
     nav a {
       color: var(--muted);
-      padding: 16px 18px;
+      padding: 9px 14px;
       text-decoration: none;
       font-family: 'Sora', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       white-space: nowrap;
       cursor: pointer;
-      position: relative;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: var(--transition);
-      border-bottom: 2px solid transparent;
+      flex-shrink: 0;
     }
-    nav a:hover { color: var(--text); }
+    nav a:hover {
+      color: var(--text);
+      background: var(--surface2);
+    }
     nav a.active {
       color: var(--accent);
-      border-bottom-color: var(--accent);
+      background: #f9731615;
+      border-color: #f9731630;
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { justify-content: flex-start; }
+      nav { padding: 8px 10px; }
+      nav a { padding: 8px 11px; font-size: 0.71rem; gap: 5px; }
     }
 
     /* ── MAIN CONTAINER ── */
@@ -678,13 +699,121 @@
       border-radius: 100px;
     }
 
+    /* ── EMAIL GROUP CARD ── */
+    .contact-group-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .contact-group-header {
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .cg-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .cg-item:hover {
+      background: var(--surface2);
+    }
+    .cg-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .cg-info { flex: 1; min-width: 0; }
+    .cg-info h5 {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cg-info span {
+      font-size: 0.76rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+    .cg-arrow {
+      color: var(--muted);
+      font-size: 0.78rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    .cg-item:hover .cg-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
     /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      header { padding: 50px 20px 44px; }
-      main { padding: 32px 16px 60px; }
+    @media (max-width: 768px) {
+      header { padding: 50px 18px 44px; }
+      header h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); letter-spacing: -1px; }
+      header .subtitle { font-size: 0.9rem; }
+      main { padding: 28px 14px 60px; }
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      nav a { padding: 14px 14px; font-size: 0.73rem; }
-      .header-stats { gap: 24px; }
+      nav { gap: 0; padding: 0 8px; }
+      nav a { padding: 14px 12px; font-size: 0.72rem; gap: 4px; }
+      .header-stats { gap: 16px; }
+      .stat-num { font-size: 1.3rem; }
+      .stat-label { font-size: 0.68rem; }
+      .about-hero { padding: 22px 18px; }
+      .card { padding: 20px 16px; }
+      .team-card { padding: 24px 18px; }
+      .policy-block-header { padding: 14px 18px; }
+      .policy-block-body { padding: 16px 18px; }
+      .contact-item { padding: 14px 16px; gap: 12px; }
+      .contact-icon { width: 38px; height: 38px; font-size: 0.95rem; }
+      .contact-info h4 { font-size: 0.82rem; }
+      .contact-info span { font-size: 0.76rem; }
+      .section-header h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
+      footer { padding: 36px 16px; }
+      .theme-toggle { bottom: 16px; right: 16px; width: 44px; height: 44px; font-size: 1rem; }
+      .chip { font-size: 0.68rem; padding: 3px 9px; }
+    }
+
+    @media (max-width: 420px) {
+      header { padding: 40px 14px 36px; }
+      nav a { padding: 12px 9px; font-size: 0.67rem; }
+      nav a i { display: none; }
+      .header-stats { gap: 10px; }
+      .stat-num { font-size: 1.1rem; }
+      .about-hero { padding: 18px 14px; }
+      .about-hero p { font-size: 0.92rem; }
+      main { padding: 22px 12px 60px; }
+      .card { padding: 16px 14px; }
+      .team-card { padding: 20px 14px; }
+      .avatar { width: 60px; height: 60px; font-size: 1.3rem; }
+      .alert-box, .danger-box, .success-box { padding: 12px 14px; gap: 10px; }
+      .grid-2 { gap: 12px; }
     }
   </style>
 </head>
@@ -717,12 +846,14 @@
 
 <!-- ══════════════ NAVIGATION ══════════════ -->
 <nav id="mainNav">
-  <a onclick="show('about')"   id="tab-about"   class="active"><i class="fas fa-store"></i> আমাদের সম্পর্কে</a>
-  <a onclick="show('team')"    id="tab-team"   ><i class="fas fa-users"></i> ম্যানেজমেন্ট</a>
-  <a onclick="show('terms')"   id="tab-terms"  ><i class="fas fa-file-signature"></i> শর্তাবলী</a>
-  <a onclick="show('refund')"  id="tab-refund" ><i class="fas fa-undo-alt"></i> রিটার্ন ও রিফান্ড</a>
-  <a onclick="show('privacy')" id="tab-privacy"><i class="fas fa-lock"></i> প্রাইভেসি পলিসি</a>
-  <a onclick="show('contact')" id="tab-contact"><i class="fas fa-headset"></i> যোগাযোগ</a>
+  <div class="nav-inner">
+    <a onclick="show('about')"   id="tab-about"   class="active"><i class="fas fa-store"></i> আমাদের সম্পর্কে</a>
+    <a onclick="show('team')"    id="tab-team"   ><i class="fas fa-users"></i> ম্যানেজমেন্ট</a>
+    <a onclick="show('terms')"   id="tab-terms"  ><i class="fas fa-file-signature"></i> শর্তাবলী</a>
+    <a onclick="show('refund')"  id="tab-refund" ><i class="fas fa-undo-alt"></i> রিটার্ন ও রিফান্ড</a>
+    <a onclick="show('privacy')" id="tab-privacy"><i class="fas fa-lock"></i> প্রাইভেসি পলিসি</a>
+    <a onclick="show('contact')" id="tab-contact"><i class="fas fa-headset"></i> যোগাযোগ</a>
+  </div>
 </nav>
 
 <main>
@@ -794,50 +925,62 @@
     </div>
 
     <div class="grid-3">
+      <!-- Kafi -->
       <div class="team-card">
-<div class="avatar">
-    <img src="upload/kafi.jpg" alt="Md Abdullah Al Kafi - Founder & Developer of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-</div>
+        <div class="avatar">
+          <img src="upload/kafi.jpg" alt="Md Abdullah Al Kafi - Founder & Developer of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
         <h3>Md Abdullah Al Kafi</h3>
         <div class="role">Owner & Developer</div>
         <div class="dept"><i class="fas fa-code" style="color:var(--muted);font-size:.8rem;margin-right:5px;"></i>Admin · Dev · Management</div>
         <a href="https://www.facebook.com/abdullahall.kafi.710" target="_blank" class="fb-link"><i class="fab fa-facebook"></i> Facebook Profile</a>
-        <div style="margin-top:8px;">
-          <span class="chip"><i class="fas fa-envelope"></i> Dev-kafi@chilmarieshop.top</span>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          <span class="chip"><i class="fas fa-envelope"></i> owner@chilmarieshop.top</span>
+          <span class="chip"><i class="fas fa-code"></i> dev-kafi@chilmarieshop.top</span>
         </div>
       </div>
 
+      <!-- Rifad -->
       <div class="team-card">
-<div class="avatar">
-    <img src="upload/rifad.jpg" alt="Md Readone Rifad - Owner & Finacial Manager of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-</div>
+        <div class="avatar blue">
+          <img src="upload/rifad.jpg" alt="Md Readone Rifad - Owner & Financial Manager of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
         <h3>Md Readone Rifad</h3>
         <div class="role">Owner & Financial Manager</div>
         <div class="dept"><i class="fas fa-chart-pie" style="color:var(--muted);font-size:.8rem;margin-right:5px;"></i>Finance & Accounts</div>
         <a href="https://www.facebook.com/mdreadone.rifad.1" target="_blank" class="fb-link"><i class="fab fa-facebook"></i> Facebook Profile</a>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          <span class="chip"><i class="fas fa-envelope"></i> manager@chilmarieshop.top</span>
+        </div>
       </div>
 
-		<dis class="team-card">
-<div class="avatar">
-    <img src="upload/shahin.jpg" alt="Md Shofiul Islam Shahin - Owner & Rider Opeations of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-</div>
+      <!-- Shahin -->
+      <div class="team-card">
+        <div class="avatar green">
+          <img src="upload/shahin.jpg" alt="Md Shofiul Islam Shahin - Owner & Rider Operations of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+        </div>
         <h3>Md Shofiul Islam Shahin</h3>
         <div class="role">Owner & Rider Operations</div>
         <div class="dept"><i class="fas fa-motorcycle" style="color:var(--muted);font-size:.8rem;margin-right:5px;"></i>Logistics In-charge</div>
         <a href="https://www.facebook.com/shofiul.islam.shahin.2025" target="_blank" class="fb-link"><i class="fab fa-facebook"></i> Facebook Profile</a>
-      </div>
-    <div class="grid-3">
-      <div class="team-card">
-<div class="avatar">
-    <img src="upload/mueen.jpg" alt="Md Mottadi Mueen - Sorting Officer" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
-</div>
-        <h3>Md Mottadi Mueen </h3>
-        <div class="role">Sorting Officer</div>
-        <div class="dept"><i class="fas fa-code" style="color:var(--muted);font-size:.8rem;margin-right:5px;"></i>Admin · Dev · Management</div>
-        <a href="https://www.facebook.com/profile.php?id=100090904542924" target="_blank" class="fb-link"><i class="fab fa-facebook"></i> Facebook Profile</a>
-        <div style="margin-top:8px;">
-          <span class="chip"><i class="fas fa-envelope"></i> Sorting-Officer@chilmarieshop.yop</span>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          <span class="chip"><i class="fas fa-envelope"></i> rider@chilmarieshop.top</span>
         </div>
+      </div>
+
+      <!-- Mottadi Mueen -->
+      <div class="team-card">
+        <div class="avatar" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+          <img src="upload/mueen.jpg" alt="Md Mottadi Mueen - Sorting Officer of Chilmari E Shop" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" onerror="this.style.display='none'; this.parentElement.innerHTML='M';">
+        </div>
+        <h3>Md Mottadi Mueen</h3>
+        <div class="role">Sorting Officer</div>
+        <div class="dept"><i class="fas fa-boxes" style="color:var(--muted);font-size:.8rem;margin-right:5px;"></i>Product Sorting & Packaging</div>
+        <a href="https://www.facebook.com/profile.php?id=100090904542924" target="_blank" class="fb-link"><i class="fab fa-facebook"></i> Facebook Profile</a>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          <span class="chip"><i class="fas fa-envelope"></i> sorting@chilmarieshop.top</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1143,6 +1286,7 @@
       </div>
     </div>
 
+    <!-- Phone -->
     <a href="tel:+8809658375163" class="contact-item">
       <div class="contact-icon ci-orange"><i class="fas fa-phone-alt"></i></div>
       <div class="contact-info">
@@ -1152,32 +1296,90 @@
       <i class="fas fa-chevron-right arrow"></i>
     </a>
 
-    <a href="mailto:support@chilmarieshop.top" class="contact-item">
-      <div class="contact-icon ci-cyan"><i class="fas fa-envelope"></i></div>
-      <div class="contact-info">
-        <h4>সাপোর্ট ইমেইল</h4>
-        <span>support@chilmarieshop.top</span>
+    <!-- ── EMAIL GROUP CARD ── -->
+    <div class="contact-group-card">
+      <div class="contact-group-header">
+        <i class="fas fa-envelope-open-text"></i>
+        <span>ইমেইল যোগাযোগ</span>
       </div>
-      <i class="fas fa-chevron-right arrow"></i>
-    </a>
 
-    <a href="mailto:support@chilmarieshop.com" class="contact-item">
-      <div class="contact-icon ci-cyan"><i class="fas fa-envelope-open"></i></div>
-      <div class="contact-info">
-        <h4>সাপোর্ট ইমেইল (বিকল্প)</h4>
-        <span>support@chilmarieshop.com</span>
-      </div>
-      <i class="fas fa-chevron-right arrow"></i>
-    </a>
+      <a href="mailto:support@chilmarieshop.top" class="cg-item">
+        <div class="cg-avatar" style="background:#06b6d415;color:#22d3ee;">
+          <i class="fas fa-headset"></i>
+        </div>
+        <div class="cg-info">
+          <h5>সাপোর্ট</h5>
+          <span>support@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
 
-    <a href="mailto:Dev-kafi@chilmarieshop.top" class="contact-item">
-      <div class="contact-icon ci-green"><i class="fas fa-code"></i></div>
-      <div class="contact-info">
-        <h4>ডেভেলপার সাপোর্ট</h4>
-        <span>Dev-kafi@chilmarieshop.top</span>
-      </div>
-      <i class="fas fa-chevron-right arrow"></i>
-    </a>
+      <a href="mailto:chilmarieshop@gmail.com" class="cg-item">
+        <div class="cg-avatar" style="background:#06b6d415;color:#22d3ee;">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="cg-info">
+          <h5>সাপোর্ট (বিকল্প)</h5>
+          <span>chilmarieshop@gmail.com</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+
+      <a href="mailto:owner@chilmarieshop.top" class="cg-item">
+        <div class="cg-avatar" style="background:#f9731615;color:#f97316;">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="cg-info">
+          <h5>Owner — Md Abdullah Al Kafi</h5>
+          <span>owner@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+
+      <a href="mailto:manager@chilmarieshop.top" class="cg-item">
+        <div class="cg-avatar" style="background:#3b82f615;color:#60a5fa;">
+          <i class="fas fa-chart-pie"></i>
+        </div>
+        <div class="cg-info">
+          <h5>Financial Manager — Md Readone Rifad</h5>
+          <span>manager@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+
+      <a href="mailto:rider@chilmarieshop.top" class="cg-item">
+        <div class="cg-avatar" style="background:#22c55e15;color:#4ade80;">
+          <i class="fas fa-motorcycle"></i>
+        </div>
+        <div class="cg-info">
+          <h5>Rider Operations — Md Shofiul Islam Shahin</h5>
+          <span>rider@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+
+      <a href="mailto:sorting@chilmarieshop.top" class="cg-item">
+        <div class="cg-avatar" style="background:#8b5cf615;color:#a78bfa;">
+          <i class="fas fa-boxes"></i>
+        </div>
+        <div class="cg-info">
+          <h5>Sorting Officer — Md Mottadi Mueen</h5>
+          <span>sorting@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+
+      <a href="mailto:dev-kafi@chilmarieshop.top" class="cg-item" style="border-bottom:none;">
+        <div class="cg-avatar" style="background:#22c55e15;color:#4ade80;">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="cg-info">
+          <h5>Developer — Md Abdullah Al Kafi</h5>
+          <span>dev-kafi@chilmarieshop.top</span>
+        </div>
+        <i class="fas fa-paper-plane cg-arrow"></i>
+      </a>
+    </div>
 
     <div class="divider"></div>
 
@@ -1231,7 +1433,7 @@
 <footer>
   <div class="footer-logo">Chilmari <span>E Shop</span></div>
   <p>Chilmari Balabari Hat, Chilmari, Kurigram — 5630, Bangladesh</p>
-  <p>support@chilmarieshop.top &nbsp;|&nbsp; +880 9658-375163</p>
+  <p>support@chilmarieshop.top &nbsp;|&nbsp; owner@chilmarieshop.top &nbsp;|&nbsp; +880 9658-375163</p>
   <br>
   <p>&copy; 2026 Chilmari E Shop. All rights reserved.</p>
   <span class="footer-owner">Owner & Developer — Md Abdullah Al Kafi</span>
@@ -1241,8 +1443,11 @@
   function show(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    document.getElementById('tab-' + id).classList.add('active');
+    const targetSection = document.getElementById(id);
+    const targetTab = document.getElementById('tab-' + id);
+    if (targetSection) targetSection.classList.add('active');
+    if (targetTab) targetTab.classList.add('active');
+    try { location.hash = id; } catch(e) {}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -1265,51 +1470,13 @@
     document.getElementById('themeIcon').className = 'fas fa-moon';
   }
 
-  function show(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-    
-    const targetSection = document.getElementById(id);
-    const targetTab = document.getElementById('tab-' + id);
-    
-    if (targetSection) targetSection.classList.add('active');
-    if (targetTab) targetTab.classList.add('active');
-    
-    // URL-এ হ্যাশট্যাগ যোগ করা যাতে গুগল আলাদা পেজ হিসেবে চেনে
-    if (history.pushState) {
-        history.pushState(null, null, '#' + id);
-    } else {
-        location.hash = '#' + id;
-    }
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // পেজ লোড হওয়ার সময় ইউআরএল চেক করা
+  // Load section from URL hash on page load
   window.addEventListener('load', () => {
     const hash = window.location.hash.substring(1);
     if (hash && document.getElementById(hash)) {
       show(hash);
     }
   });
-
-  function toggleTheme() {
-    const body = document.body;
-    const icon = document.getElementById('themeIcon');
-    body.classList.toggle('light-mode');
-    if (body.classList.contains('light-mode')) {
-      icon.className = 'fas fa-moon';
-      localStorage.setItem('theme', 'light');
-    } else {
-      icon.className = 'fas fa-sun';
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-    document.getElementById('themeIcon').className = 'fas fa-moon';
-  }
 </script>
 
 </body>
